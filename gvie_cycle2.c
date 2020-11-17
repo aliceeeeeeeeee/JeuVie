@@ -176,8 +176,8 @@ int main(int *argc, char ***argv)
 	gettimeofday( &tv_init, NULL);
 	
 	
-	MPI_Comm_rank(MPI_COMM_WORLD, int &rank);
-	MPI_Comm_size(MPI_COMM_WORLD, int &size);
+	MPI_Comm_rank(MPI_COMM_WORLD,  &rank);
+	MPI_Comm_size(MPI_COMM_WORLD,  &size);
 	//MPI_Scatter(tt,HM*LM,MPI_INT,HM*LM,subtaille,MPI_INT,0,MPI_COMM_WORLD);
 	
 		
@@ -203,6 +203,6 @@ int main(int *argc, char ***argv)
 	gettimeofday( &tv_end, NULL);
 	printf( "pas de cycle trouve en %d itérations\n", ITER );
 	printf( "Calcul : %lfs.\n", DIFFTEMPS(tv_init,tv_end) );
-	MPI.Finalize();
+	MPI_Finalize();
 	return( 0 );
 }
