@@ -132,7 +132,7 @@ void init( tab t )
 }
 
 // calcule le nombre de voisins de la case (i,j) du tableau t.
-int inline nbvois( tab t, const int i, const int j )
+int nbvois( tab t, const int i, const int j )
 {
 	int n=0;
 	if( i>0 )
