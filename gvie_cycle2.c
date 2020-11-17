@@ -180,7 +180,7 @@ int main(int *argc, char ***argv)
 	MPI_Comm_size(MPI_COMM_WORLD,  &size);
 	//MPI_Scatter(tt,HM*LM,MPI_INT,HM*LM,subtaille,MPI_INT,0,MPI_COMM_WORLD);
 	
-		
+
 	for( i=0 ; i<ITER ; i++ )
 	{
 		/* calcul du nouveau tableau i+1 en fonction du tableau i */
