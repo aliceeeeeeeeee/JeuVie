@@ -165,7 +165,11 @@ int main(int *argc, char ***argv)
 	subtaille=HM/size;
   	subtab = (int *)malloc(subtaille *sizeof(int));
 	struct timeval tv_init, tv_end;
-	int MPI_Init(int &argc, char &argv);
+	if (MPI_Init(int &argc, char &argv))
+	{
+		fprintf(stderr,'erreur initialisation');
+		exit(1);
+	}
 		
 	init( tt[0] );
 	gettimeofday( &tv_init, NULL);
