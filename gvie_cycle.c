@@ -22,7 +22,8 @@ typedef unsigned char tab[HM][LM];
 
 // prédéclarations des fonctions utiles
 void init( tab );
-void calcnouv( tab, tab );
+void 
+nouv( tab, tab );
 int egal( tab, tab );
 
 // variable globale sinon stack overflow...
@@ -139,7 +140,7 @@ int nbvois( tab t, const int i, const int j )
 void calcnouv( tab t, tab n )
 {
 	int i,j, v;
-	for(  i=0 ; i<HM ; i++ )
+	for(  i=0 ; i<HM/size ; i++ )
 	{
 		for( j=0 ; j<LM ; j++ )
 		{
@@ -171,7 +172,7 @@ int main(int *argc, char ***argv)
 	
 	MPI_Comm_rank(MPI_COMM_WORLD, int &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, int &size);
-	MPI_Scatter(tt,HM*LM,MPI_INT,HM*LM,subtaille,MPI_INT,0,MPI_COMM_WORLD);
+	//MPI_Scatter(tt,HM*LM,MPI_INT,HM*LM,subtaille,MPI_INT,0,MPI_COMM_WORLD);
 	
 		
 	for( i=0 ; i<ITER ; i++ )
