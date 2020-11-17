@@ -202,6 +202,6 @@ int main(int *argc, char ***argv)
 	gettimeofday( &tv_end, NULL);
 	printf( "pas de cycle trouve en %d itérations\n", ITER );
 	printf( "Calcul : %lfs.\n", DIFFTEMPS(tv_init,tv_end) );
-
+	MPI.Finalize();
 	return( 0 );
 }
