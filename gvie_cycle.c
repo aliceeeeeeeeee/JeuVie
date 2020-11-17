@@ -153,14 +153,26 @@ void calcnouv( tab t, tab n )
 		}
 	}
 }
-int main()
+int main(int *argc, char ***argv)
 {
 	int i, j;
+	int rank;
+	int size;
+	int  *subtab;
+  	int subtaille;
+	subtaille=HM/size;
+  	subtab = (int *)malloc(subtaille *sizeof(int));
 	struct timeval tv_init, tv_end;
-
+		
 	init( tt[0] );
 	gettimeofday( &tv_init, NULL);
-
+	
+	
+	MPI_Comm_rank(MPI_Comm comm, int &rank);
+	MPI_Comm_size(MPI_Comm comm, int &size);
+	MPI_Scatter(tt,HM,MPI_INT,subtab,subtaille,MPI_INT,0,MPI_COMM_WORLD);
+	
+		
 	for( i=0 ; i<ITER ; i++ )
 	{
 		/* calcul du nouveau tableau i+1 en fonction du tableau i */
