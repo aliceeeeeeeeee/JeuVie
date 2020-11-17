@@ -163,6 +163,7 @@ int main(int *argc, char ***argv)
 	subtaille=HM/size;
   	subtab = (int *)malloc(subtaille *sizeof(int));
 	struct timeval tv_init, tv_end;
+	int MPI_Init(int &argc, char &argv)
 		
 	init( tt[0] );
 	gettimeofday( &tv_init, NULL);
