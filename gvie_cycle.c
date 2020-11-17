@@ -158,20 +158,20 @@ int main(int *argc, char ***argv)
 	int i, j;
 	int rank;
 	int size;
-	//int  *subtab;
+	int  *subtab;
   	int subtaille;
 	subtaille=HM/size;
   	subtab = (int *)malloc(subtaille *sizeof(int));
 	struct timeval tv_init, tv_end;
-	int MPI_Init(int &argc, char &argv)
+	int MPI_Init(int &argc, char &argv);
 		
 	init( tt[0] );
 	gettimeofday( &tv_init, NULL);
 	
 	
-	MPI_Comm_rank(MPI_Comm comm, int &rank);
-	MPI_Comm_size(MPI_Comm comm, int &size);
-	MPI_Scatter(tt,HM*HL,MPI_INT,HM*HL,subtaille,MPI_INT,0,MPI_COMM_WORLD);
+	MPI_Comm_rank(MPI_COMM_WORLD, int &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, int &size);
+	MPI_Scatter(tt,HM*LM,MPI_INT,HM*LM,subtaille,MPI_INT,0,MPI_COMM_WORLD);
 	
 		
 	for( i=0 ; i<ITER ; i++ )
