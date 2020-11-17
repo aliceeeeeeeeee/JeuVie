@@ -28,40 +28,6 @@ int egal( tab, tab );
 // variable globale sinon stack overflow...
 tab tt[LONGCYCLE];	// tableau de tableaux
 
-int main()
-{
-	int i, j;
-	struct timeval tv_init, tv_end;
-
-	init( tt[0] );
-	gettimeofday( &tv_init, NULL);
-
-	for( i=0 ; i<ITER ; i++ )
-	{
-		/* calcul du nouveau tableau i+1 en fonction du tableau i */
-		calcnouv( tt[i%LONGCYCLE], tt[(i+1)%LONGCYCLE] );
-
-		/* comparaison du nouveau tableau avec les (LONGCYCLE-1) précédents */
-		for( j=1 ; j<LONGCYCLE ; j++ )
-			if( egal( tt[(i+1)%LONGCYCLE], tt[(i+1+j)%LONGCYCLE] ) )
-			{
-				// on a trouvé le tableau identique !
-				gettimeofday( &tv_end, NULL);
-				printf( "Cycle trouve : iteration %d, longueur %d\n",
-					 i+1-(LONGCYCLE-j),
-					 LONGCYCLE-j );
-				printf( "Calcul : %lfs.\n", DIFFTEMPS(tv_init,tv_end) );
-				return( 0 );
-			}
-	}
-
-	gettimeofday( &tv_end, NULL);
-	printf( "pas de cycle trouve en %d itérations\n", ITER );
-	printf( "Calcul : %lfs.\n", DIFFTEMPS(tv_init,tv_end) );
-
-	return( 0 );
-}
-
 // fonction de comparaison de deux tableaux a et b,
 // renvoie vrai s'ils sont égaux, faux sinon.
 	/* Note: ajouter __attribute__ ((noinline)) pour faire des mesures de performance avec gprof */
@@ -186,4 +152,37 @@ void calcnouv( tab t, tab n )
 				n[i][j] = 0;
 		}
 	}
+}
+int main()
+{
+	int i, j;
+	struct timeval tv_init, tv_end;
+
+	init( tt[0] );
+	gettimeofday( &tv_init, NULL);
+
+	for( i=0 ; i<ITER ; i++ )
+	{
+		/* calcul du nouveau tableau i+1 en fonction du tableau i */
+		calcnouv( tt[i%LONGCYCLE], tt[(i+1)%LONGCYCLE] );
+
+		/* comparaison du nouveau tableau avec les (LONGCYCLE-1) précédents */
+		for( j=1 ; j<LONGCYCLE ; j++ )
+			if( egal( tt[(i+1)%LONGCYCLE], tt[(i+1+j)%LONGCYCLE] ) )
+			{
+				// on a trouvé le tableau identique !
+				gettimeofday( &tv_end, NULL);
+				printf( "Cycle trouve : iteration %d, longueur %d\n",
+					 i+1-(LONGCYCLE-j),
+					 LONGCYCLE-j );
+				printf( "Calcul : %lfs.\n", DIFFTEMPS(tv_init,tv_end) );
+				return( 0 );
+			}
+	}
+
+	gettimeofday( &tv_end, NULL);
+	printf( "pas de cycle trouve en %d itérations\n", ITER );
+	printf( "Calcul : %lfs.\n", DIFFTEMPS(tv_init,tv_end) );
+
+	return( 0 );
 }
