@@ -165,7 +165,7 @@ int main(int *argc, char ***argv)
 	subtaille=HM/size;
   	subtab = (int *)malloc(subtaille *sizeof(int));
 	struct timeval tv_init, tv_end;
-	if (MPI_Init(int &argc, char &argv))
+	if (MPI_Init(&argc, &argv))
 	{
 		fprintf(stderr,'erreur initialisation');
 		exit(1);
