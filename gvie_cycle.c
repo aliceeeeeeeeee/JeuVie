@@ -28,7 +28,7 @@ nouv( tab, tab );
 int egal( tab, tab );
 
 // variable globale sinon stack overflow...
-tab tt[LONGCYCLE];	// tableau de tableaux
+tab tt[LONGCYCLE];// tableau de tableaux
 
 // fonction de comparaison de deux tableaux a et b,
 // renvoie vrai s'ils sont égaux, faux sinon.
