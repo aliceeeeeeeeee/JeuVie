@@ -138,7 +138,7 @@ int nbvois( tab t, const int i, const int j )
 }
 
 // calcule un nouveau tableau en fonction d'un ancien
-void calcnouv( tab t, tab n, int rank )
+void calcnouv( tab t, tab n, int rank, int size )
 {
 	int i,j, v;
 	for(  i=HM/size*rank ; i<HM/size*(rank+1) ; i++ )
