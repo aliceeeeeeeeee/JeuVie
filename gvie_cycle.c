@@ -137,11 +137,12 @@ int nbvois( tab t, const int i, const int j )
 }
 
 // calcule un nouveau tableau en fonction d'un ancien
-void calcnouv( tab t, tab n )
+void calcnouv( tab t, tab n, rank )
 {
 	int i,j, v;
-	for(  i=0 ; i<HM/size ; i++ )
+	for(  i=HM/size*rank ; i<HM/size*(rank+1) ; i++ )
 	{
+	
 		for( j=0 ; j<LM ; j++ )
 		{
 			v = nbvois( t, i, j );
@@ -178,7 +179,7 @@ int main(int *argc, char ***argv)
 	for( i=0 ; i<ITER ; i++ )
 	{
 		/* calcul du nouveau tableau i+1 en fonction du tableau i */
-		calcnouv( tt[i%LONGCYCLE], tt[(i+1)%LONGCYCLE] );
+		calcnouv( tt[i%LONGCYCLE], tt[(i+1)%LONGCYCLE], rank );
 
 		/* comparaison du nouveau tableau avec les (LONGCYCLE-1) précédents */
 		for( j=1 ; j<LONGCYCLE ; j++ )
